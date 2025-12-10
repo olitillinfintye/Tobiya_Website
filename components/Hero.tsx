@@ -109,29 +109,27 @@ export default function Hero(){
       {/* Content: left card + right Lottie preview */}
       <div className="relative z-10 max-w-6xl w-full px-4">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-          <motion.div initial={{opacity:0, y:10}} animate={{opacity:1,y:0}} transition={{duration:0.8}} className="glass px-6 py-12 rounded-2xl neon-border border relative z-10 w-full md:w-1/2">
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight" style={{color:'var(--text-soft)'}}>
+          <div className="w-full md:w-2/5 flex flex-col justify-center items-center md:items-start px-4" style={{paddingTop: '150px'}}>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight text-center md:text-left" style={{color: 'var(--text-soft)'}}>
               Tobiya Game Studio — Immersive XR Experiences
             </h1>
-            <p className="mt-4 text-base md:text-lg opacity-80">Tobiya Game Studio is an innovator in game development, pushing boundaries of storytelling through immersive technologies in Ethiopia.</p>
+            <p className="mt-4 text-base md:text-lg opacity-80 text-center md:text-left">Tobiya Game Studio is an innovator in game development, pushing boundaries of storytelling through immersive technologies in Ethiopia.</p>
 
-            <div className="mt-8 flex items-start gap-4">
-              <div className="flex flex-col gap-3">
-                <motion.a whileHover={{scale:1.03}} whileTap={{scale:0.98}} href="#projects" className="btn btn-primary focus-ring">
-                  Enter XR World
-                </motion.a>
-                <motion.a whileHover={{scale:1.03}} className="btn btn-ghost btn-small" href="#contact">Join Our Journey</motion.a>
+            <div className="mt-8 flex items-center justify-center md:justify-start">
+              <div className="flex flex-col gap-3 items-center md:items-start">
+                <a href="#projects" className="btn btn-primary focus-ring" tabIndex={0}>Enter XR World</a>
+                <a className="btn btn-ghost btn-small" href="#contact">Join Our Journey</a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <div className="w-full md:w-1/2 flex items-center justify-center">
-            <div className="w-full h-auto max-h-[420px] md:max-h-[520px] rounded-xl overflow-hidden shadow-lg">
+          <div className="w-full md:w-3/5 flex items-center justify-center">
+            <div className="w-full h-auto max-h-[560px] md:max-h-[720px] rounded-xl overflow-hidden shadow-lg" style={{height: '700px', paddingTop: '100px', width: '650px'}}>
               <iframe
                 src="https://lottie.host/embed/ae9786b7-e8f8-40bd-a0f4-90f6d61e251c/xao9tzXDBt.lottie"
                 title="Tobiya Scene Preview"
                 className="w-full h-full border-0 pointer-events-none"
-                style={{minHeight: '240px'}}
+                style={{minHeight: '360px'}}
                 loading="lazy"
               />
             </div>
