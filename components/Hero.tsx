@@ -124,7 +124,7 @@ export default function Hero(){
           </div>
 
           <div className="w-full md:w-3/5 flex items-center justify-center">
-            <div className="w-full h-auto max-h-[560px] md:max-h-[720px] rounded-xl overflow-hidden shadow-lg" style={{height: '700px', paddingTop: '100px', width: '650px'}}>
+            <div className="w-full md:w-[650px] h-auto md:h-[700px] rounded-xl overflow-hidden shadow-lg" style={{paddingTop: '100px', maxWidth: '650px'}}>
               <iframe
                 src="https://lottie.host/embed/ae9786b7-e8f8-40bd-a0f4-90f6d61e251c/xao9tzXDBt.lottie"
                 title="Tobiya Scene Preview"

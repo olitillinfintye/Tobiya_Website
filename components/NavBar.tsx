@@ -66,7 +66,7 @@ export default function NavBar(){
           </div>
 
           <div className="flex items-center gap-3">
-            <a className="hidden sm:inline-block btn btn-primary btn-small focus-ring" href="#projects">Enter XR World</a>
+            {/* Enter XR World button removed from navbar (kept in hero) */}
 
             <button onClick={toggleTheme} aria-pressed={theme === 'light'} aria-label="Toggle theme" title="Toggle light / dark" className="theme-toggle btn-icon focus-ring hidden sm:inline-flex bg-transparent">
               {theme === 'dark' ? (
