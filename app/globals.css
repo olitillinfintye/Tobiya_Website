@@ -15,6 +15,11 @@ html,body,#root{
   height:100%;
 }
 
+/* Smooth scrolling for in-page navigation */
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   background: radial-gradient(1200px 600px at 10% 10%, rgba(0,245,255,0.06), transparent), radial-gradient(800px 400px at 90% 80%, rgba(157,78,221,0.04), transparent), var(--bg-primary);
   color:var(--text-soft);
@@ -109,56 +114,111 @@ html.theme-light .text-white\/60{ color: rgba(11,18,32,0.6) !important }
   animation: floaty 6s ease-in-out infinite;
 }
 
-/* Modern button system */
+/* Enhanced bouncing animation for hero bubbles. Use CSS variables to seed position/size/duration per bubble. */
+.hero-bubble{
+  left: var(--bubble-left, auto);
+  top: var(--bubble-top, auto);
+  width: var(--bubble-size, 64px);
+  height: var(--bubble-size, 64px);
+  animation: bubble-bounce var(--bubble-duration, 9s) ease-in-out var(--bubble-delay, 0s) infinite, floaty 6s ease-in-out infinite;
+}
+
+@keyframes bubble-bounce{
+  0%{ transform: translate3d(0,0,0) scale(var(--bubble-scale,1)) rotate(0deg) }
+  12%{ transform: translate3d(-8px,-10px,0) scale(calc(var(--bubble-scale,1) * 1.02)) rotate(-3deg) }
+  25%{ transform: translate3d(12px,-6px,0) scale(calc(var(--bubble-scale,1) * 1.04)) rotate(2deg) }
+  38%{ transform: translate3d(-10px,8px,0) scale(calc(var(--bubble-scale,1) * 1.03)) rotate(-1deg) }
+  50%{ transform: translate3d(6px,12px,0) scale(var(--bubble-scale,1)) rotate(0deg) }
+  62%{ transform: translate3d(-6px,6px,0) scale(calc(var(--bubble-scale,1) * 0.98)) rotate(2deg) }
+  75%{ transform: translate3d(10px,-8px,0) scale(calc(var(--bubble-scale,1) * 1.02)) rotate(-2deg) }
+  88%{ transform: translate3d(-4px,-4px,0) scale(calc(var(--bubble-scale,1) * 1.01)) rotate(1deg) }
+  100%{ transform: translate3d(0,0,0) scale(var(--bubble-scale,1)) rotate(0deg) }
+}
+
+/* Modern glassy button system (single accent color) */
+:root{ --btn-accent: #00f5ff }
+
 .btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 120ms ease, box-shadow 180ms ease, background-color 160ms ease, color 160ms ease;
-  border: 1px solid transparent;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:0.6rem 1rem;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform 140ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, background-color 160ms ease, color 120ms ease;
+  border:1px solid rgba(0,0,0,0.04);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+  background: linear-gradient(180deg, rgba(0,245,255,0.08), rgba(0,245,255,0.04));
+  box-shadow: 0 6px 20px rgba(0,245,255,0.06);
+  color:var(--text-soft);
 }
-.btn:active{ transform: translateY(1px) scale(0.997) }
+.btn:active{ transform: translateY(1px) scale(.997) }
+.btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,245,255,0.12) }
 
-.btn-small{ padding: 0.4rem 0.75rem; font-size: 0.9rem }
+.btn-small{ padding:0.38rem 0.8rem; font-size:0.9rem }
 
+/* Primary-like appearance but still using single accent color */
 .btn-primary{
-  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-  color: #061121;
-  box-shadow: 0 6px 20px rgba(0,245,255,0.08), inset 0 -4px 18px rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, rgba(0,245,255,0.14), rgba(0,245,255,0.08));
+  color:#061121;
+  border-color: rgba(0,245,255,0.18);
+  box-shadow: 0 8px 30px rgba(0,245,255,0.12), inset 0 -6px 18px rgba(0,0,0,0.06);
 }
-.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,245,255,0.1) }
 
 .btn-secondary{
-  background: linear-gradient(90deg, rgba(157,78,221,0.12), rgba(255,5,85,0.06));
-  color: var(--text-soft);
-  border: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(0,245,255,0.06), rgba(0,245,255,0.03));
+  color:var(--text-soft);
+  border-color: rgba(0,245,255,0.06);
 }
 
 .btn-ghost{
   background: transparent;
-  color: var(--text-soft);
-  border: 1px solid rgba(255,255,255,0.06);
+  color: rgba(0,245,255,0.95);
+  border:1px solid rgba(0,245,255,0.12);
 }
-.btn-ghost:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.12) }
+.btn-ghost:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,245,255,0.06) }
 
 .btn-outline{
-  background: transparent;
-  color: var(--text-soft);
-  border: 1px solid rgba(255,255,255,0.12);
+  background:transparent;
+  color:var(--text-soft);
+  border:1px solid rgba(0,245,255,0.12);
 }
 
 .btn-icon{
-  padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.02); display:inline-flex; align-items:center; justify-content:center;
+  padding:8px; border-radius:10px; background: linear-gradient(180deg, rgba(0,245,255,0.04), rgba(0,245,255,0.02)); display:inline-flex; align-items:center; justify-content:center;
 }
 
 /* Light theme adjustments for buttons */
 html.theme-light .btn-primary{ color: #fff }
 html.theme-light .btn-ghost{ color: var(--text-soft); border-color: rgba(16,24,32,0.06) }
+
+/* Buttons in light (white) theme should switch to a dark/black appearance for contrast */
+html.theme-light .btn,
+html.theme-light .btn-primary,
+html.theme-light .btn-secondary,
+html.theme-light .btn-icon{
+  background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(6,9,14,0.9));
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 30px rgba(11,18,32,0.12);
+}
+
+html.theme-light .btn-ghost{
+  background: transparent;
+  color: #0b1220;
+  border-color: rgba(16,24,32,0.06);
+  box-shadow: none;
+}
+
+html.theme-light .btn-outline{ color: #0b1220; border-color: rgba(16,24,32,0.06) }
+
+/* Ensure anchored sections are not hidden under the fixed nav */
+section[id], [id] {
+  scroll-margin-top: 5rem; /* adjust if your navbar height changes */
+}
 
 
 @keyframes floaty{

@@ -39,6 +39,7 @@ export default function NavBar(){
   }
 
   const links = [
+    { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
     { href: '#projects', label: 'Projects' },
@@ -54,7 +55,10 @@ export default function NavBar(){
             <Link href="#" aria-label="Tobiya Home">
               <img src="/logo.png" alt="Tobiya Studio" className="h-15 md:h-12 w-auto" onError={(e)=>{(e.currentTarget as HTMLImageElement).src='/logo.svg'}} />
             </Link>
-            <div className="hidden md:flex items-center gap-3">
+          </div>
+
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center gap-3">
               {links.map(l => (
                 <a key={l.href} href={l.href} className="text-sm opacity-90 hover:text-white/100 px-3 py-2 rounded focus-ring">{l.label}</a>
               ))}
